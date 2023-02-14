@@ -34,7 +34,7 @@ const ViewImages = () => {
     photos = photos.filter((photo) => photo.email === localStorage.getItem("email"))
     const handleView = async (e) => {
         try {
-            let res = await axios.post('http://localhost:8080/api/update/view', { "id": e.target.value });
+            let res = await axios.post('https://image-mern-uploader.onrender.com/api/update/view', { "id": e.target.value });
             setdialogImage(res.data);
             setOpen(true);
         } catch (error) {

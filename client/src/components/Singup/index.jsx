@@ -24,7 +24,7 @@ const Signup = () => {
 		e.preventDefault();
 		try {
 
-			const url = "http://localhost:8080/api/users";
+			const url = "https://image-mern-uploader.onrender.com/api/users";
 		    await axios.post(url, data);
 			toast.success('User  Added Successfully', { position: toast.POSITION.TOP_CENTER });
 			setTimeout(() => navigate("/login"), 3000);

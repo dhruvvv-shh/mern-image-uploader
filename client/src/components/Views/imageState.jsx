@@ -5,7 +5,7 @@ export const getPhotos = createAsyncThunk(
     'photos/getPhotos',
     async () => {
         console.log('insisss')
-        const response = await axios.get('http://localhost:8080/api/view/images');
+        const response = await axios.get('https://image-mern-uploader.onrender.com/api/view/images');
         return response.data
     }
 )

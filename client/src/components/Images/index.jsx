@@ -34,7 +34,7 @@ const ImageUploader = () => {
         'viewcount': 0
       };
 
-      await axios.post('http://localhost:8080/api/image/add', imageData);
+      await axios.post('https://image-mern-uploader.onrender.com/api/image/add', imageData);
       toast.success('Image Added Successfully', { position: toast.POSITION.TOP_CENTER });
       setTimeout(() => { window.location.reload() }, 4000);
 
@@ -54,7 +54,7 @@ const ImageUploader = () => {
 
   return (
     <div className='image_container'>
-      <div className='image_submit_container'>
+      <div className='image_submit'>
         <h1 style={{ "display": "inline-flex" }}> <FiImage style={{ "margin-top": "5px", "color": "#3bb19b", "margin-right": "10px" }} /> Upload Image </h1>
         <div>
           <h3>Title</h3>
@@ -78,8 +78,6 @@ const ImageUploader = () => {
           {image && <div style={{ "text-color": " #edf5f3" }}>Added File : {image.name}</div>}
         </div>
 
-      </div>
-      <div>
       </div>
     </div>
   )
