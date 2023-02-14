@@ -24,7 +24,6 @@ const ViewImages = () => {
     };
 
     let photos = useSelector(state => state.gallery.photos);
-    console.log('Phtos --->', photos)
 
     useEffect(() => {
         dispatch(getPhotos());

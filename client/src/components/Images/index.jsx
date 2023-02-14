@@ -22,8 +22,9 @@ const ImageUploader = () => {
     data.append('upload_preset', 'bjeqamut')
     console.log('image', image)
     let url = 'https://api.cloudinary.com/v1_1/dvt51l99m/image/upload'
-
+    const id = toast.loading("Uploading Images", { position: toast.POSITION.TOP_CENTER });
     try {
+     
       let response = await axios.post(url, data);
 
       let imageData = {
@@ -35,8 +36,9 @@ const ImageUploader = () => {
       };
 
       await axios.post('https://image-mern-uploader.onrender.com/api/image/add', imageData);
-      toast.success('Image Added Successfully', { position: toast.POSITION.TOP_CENTER });
-      setTimeout(() => { window.location.reload() }, 4000);
+       toast.update(id,{render: "Image Added Succesfully", type:toast.TYPE.SUCCESS, isLoading:false , autoClose:3000})
+      // toast.update({render: "Image Added Succesfully", type:toast.TYPE.SUCCESS});
+      setTimeout(() => { window.location.reload() }, 3000);
 
     } catch (error) {
       if (
@@ -44,10 +46,10 @@ const ImageUploader = () => {
         error.response.status >= 400 &&
         error.response.status <= 500
       ) {
-        toast.error(error.response.data.message, {
-          position: toast.POSITION.TOP_CENTER
-        })
-      }
+        
+        setTimeout(() => toast.update(id, { render: error.response.data.message, type: toast.TYPE.ERROR, isLoading: false , autoClose: 3000}) , 2000)
+      
+        }
 
     }
   }
@@ -74,7 +76,7 @@ const ImageUploader = () => {
 
           <button type="button" onClick={handleSubmit} className="green_btn">Submit  </button>
         </div>
-        <div className='ab'>
+        <div className='file_name'>
           {image && <div style={{ "text-color": " #edf5f3" }}>Added File : {image.name}</div>}
         </div>
 
